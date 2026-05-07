@@ -59,8 +59,40 @@
 
   #hero {
     min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: center;
     padding-top: 6rem;
+  }
+
+  .hero-content { display: flex; flex-direction: column; }
+
+  .hero-image-wrap {
+    position: relative;
+    width: 280px;
+    flex-shrink: 0;
+  }
+
+  .hero-image-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    z-index: 0;
+    opacity: 0.6;
+  }
+
+  .hero-image-wrap img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 18px;
+    display: block;
   }
 
   .hero-eyebrow {
@@ -139,8 +171,32 @@
   }
 
   .about-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+    display: grid; grid-template-columns: 220px 1fr 1fr; gap: 2.5rem;
     align-items: start;
+  }
+
+  .about-image-wrap {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .about-image-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    border: 1px solid rgba(200,240,74,0.25);
+    pointer-events: none;
+  }
+
+  .about-image-wrap img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    border-radius: 16px;
   }
 
   .about-text p {
@@ -265,6 +321,8 @@
     nav { padding: 1rem 1.25rem; }
     .nav-links { gap: 1.25rem; }
     section { padding: 3.5rem 1.25rem; }
+    #hero { grid-template-columns: 1fr; }
+    .hero-image-wrap { width: 200px; margin: 0 auto; }
     .about-grid { grid-template-columns: 1fr; gap: 2rem; }
     .project-card { grid-template-columns: 1fr; }
     .project-arrow { display: none; }
@@ -285,6 +343,7 @@
 
 <!-- HERO -->
 <section id="hero">
+  <div class="hero-content">
   <div class="hero-eyebrow">Available for hire</div>
   <h1 class="hero-name">
     Ajay Pokharel <br/>
@@ -297,6 +356,10 @@
     <a href="#projects" class="btn-primary">View my work</a>
     <a href="#contact" class="btn-ghost">Get in touch</a>
   </div>
+  </div>
+  <div class="hero-image-wrap">
+    <img src="assets/hero.jpeg" alt="Ajay Pokharel" />
+  </div>
 </section>
 
 <hr class="divider"/>
@@ -306,6 +369,9 @@
   <div class="section-label">Who I am</div>
   <h2 class="section-title">About me</h2>
   <div class="about-grid">
+    <div class="about-image-wrap">
+      <img src="assets/about.jpeg" alt="Ajay Pokharel" />
+    </div>
     <div class="about-text">
       <p>Hi! I'm <strong style="color:#f0efe8; font-weight:500;">Ajay Pokharel</strong>, a passionate developer based in Butwal . I love crafting digital experiences that are not just functional, but truly delightful to use.</p>
       <p>With a background in <strong style="color:#f0efe8; font-weight:500;">Computer Science</strong>, I've worked across front end  development, UI/UX design, and everything in between. I'm always looking to learn and grow.</p>
